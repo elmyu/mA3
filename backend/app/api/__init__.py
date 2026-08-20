@@ -2,6 +2,7 @@
 
 
 def register_blueprints(app):
-    from . import auth
+    from . import auth, patients, signals
 
-    app.register_blueprint(auth.bp)
+    for blueprint in (auth.bp, patients.bp, signals.bp):
+        app.register_blueprint(blueprint)
