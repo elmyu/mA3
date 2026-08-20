@@ -20,7 +20,7 @@ def get_user(user_id):
 
 def create_user(data):
     username = (data.get("username") or "").strip()
-    password = data.get("password") or ""
+    password = str(data.get("password") or "")
     role = data.get("role")
     if not username or not password or role not in ROLES:
         raise ApiError("用户名、密码与角色不能为空且角色必须合法", 400)
@@ -52,7 +52,7 @@ def update_user(user_id, data):
         user.username = username
     password = data.get("password")
     if password:
-        user.password_hash = generate_password_hash(password)
+        user.password_hash = generate_password_hash(str(password))
     if "role" in data and data["role"] not in ROLES:
         raise ApiError("角色必须合法", 400)
     user.role = data.get("role", user.role)
