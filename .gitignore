@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.env
+.pip-cache/
+instance/*.db
+
+# Node
+node_modules/
+dist/
+.pnpm-store/
+.npm-cache/
+
+# 上传文件
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# 系统与 Office 临时文件
+.DS_Store
+Thumbs.db
+~$*
+
+# 作业要求文档（不纳入仓库）
+大作业要求.docx
