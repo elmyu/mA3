@@ -1,0 +1,13 @@
+.git
+node_modules
+dist
+venv
+__pycache__
+.pnpm-store
+.pnpm-cache
+.pip-cache
+backend/instance
+backend/uploads/*
+!backend/uploads/.gitkeep
+docs
+大作业要求.docx
