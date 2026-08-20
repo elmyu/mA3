@@ -19,7 +19,7 @@ ensure_storage()
 
 class Config:
     SECRET_KEY = os.environ.get("SECRET_KEY", "minibmehub-dev-secret")
-    JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY", "minibmehub-jwt-secret")
+    JWT_SECRET_KEY = os.environ.get("JWT_SECRET_KEY", "minibmehub-jwt-secret-key-for-dev-2026")
     SQLALCHEMY_DATABASE_URI = "sqlite:///" + DB_PATH.replace("\\", "/")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     UPLOAD_FOLDER = UPLOAD_FOLDER
