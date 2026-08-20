@@ -72,8 +72,8 @@ docker compose -f docker/docker-compose.yml up --build
 
 每次推送到 `main` 分支，GitHub Actions 会自动构建镜像到 GHCR：
 
-- 后端：`ghcr.io/elmyu/mA3/backend:latest`
-- 前端：`ghcr.io/elmyu/mA3/frontend:latest`
+- 后端：`ghcr.io/elmyu/ma3/backend:latest`
+- 前端：`ghcr.io/elmyu/ma3/frontend:latest`
 
 部署步骤见 [docs/Sealos部署指南.md](docs/Sealos部署指南.md)，全程在网页控制台操作，无需本地安装 Docker。
 

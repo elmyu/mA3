@@ -13,32 +13,32 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: docker/setup-buildx-action@v3
+      - uses: docker/setup-buildx-action@v4
 
-      - uses: docker/login-action@v3
+      - uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push backend image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: docker/Dockerfile.backend
           push: true
           tags: |
-            ghcr.io/elmyu/mA3/backend:latest
-            ghcr.io/elmyu/mA3/backend:${{ github.sha }}
+            ghcr.io/elmyu/ma3/backend:latest
+            ghcr.io/elmyu/ma3/backend:${{ github.sha }}
 
       - name: Build and push frontend image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         with:
           context: .
           file: docker/Dockerfile.frontend
           push: true
           tags: |
-            ghcr.io/elmyu/mA3/frontend:latest
-            ghcr.io/elmyu/mA3/frontend:${{ github.sha }}
+            ghcr.io/elmyu/ma3/frontend:latest
+            ghcr.io/elmyu/ma3/frontend:${{ github.sha }}

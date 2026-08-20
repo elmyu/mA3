@@ -6,8 +6,8 @@
 
 | 应用 | 镜像 |
 |---|---|
-| 后端（Flask） | `ghcr.io/elmyu/mA3/backend:latest` |
-| 前端（Nginx） | `ghcr.io/elmyu/mA3/frontend:latest` |
+| 后端（Flask） | `ghcr.io/elmyu/ma3/backend:latest` |
+| 前端（Nginx） | `ghcr.io/elmyu/ma3/frontend:latest` |
 
 构建进度可在 GitHub 仓库的 **Actions** 页面查看，绿勾即构建完成。
 
@@ -16,7 +16,7 @@
 1. 打开你的 Sealos 控制台（https://hzh.sealos.run/ ）并登录，进入一个工作空间。
 2. 点击 **应用管理（App Launchpad）** → **创建新应用**。
 3. 选择 **通过 Docker 镜像部署**，填入：
-   - 镜像：`ghcr.io/elmyu/mA3/backend:latest`
+   - 镜像：`ghcr.io/elmyu/ma3/backend:latest`
    - 容器端口：`5000`
 4. 环境变量（点击“添加环境变量”）：
    - `SECRET_KEY`：随意填一串字符（如 `minibmehub-sealos-secret`）
@@ -31,7 +31,7 @@
 
 1. 再次进入 **应用管理** → **创建新应用**。
 2. 填入：
-   - 镜像：`ghcr.io/elmyu/mA3/frontend:latest`
+   - 镜像：`ghcr.io/elmyu/ma3/frontend:latest`
    - 容器端口：`80`
 3. 环境变量：
    - `BACKEND_URL`：填上一步复制的后端内部地址，格式必须带协议：`http://backend-xxxxx.default.svc.cluster.local:5000`
