@@ -2,6 +2,7 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
+from flasgger import Swagger
 
 from .config import Config
 from .errors import ApiError
@@ -14,6 +15,19 @@ def create_app(config_class=Config):
     db.init_app(app)
     CORS(app)
     JWTManager(app)
+    Swagger(
+        app,
+        template={
+            "info": {
+                "title": "Mini BME-Hub API",
+                "description": "医疗设备管理平台接口文档",
+                "version": "1.0.0",
+            },
+            "securityDefinitions": {
+                "Bearer": {"type": "apiKey", "name": "Authorization", "in": "header"}
+            },
+        },
+    )
 
     from .api import register_blueprints
 
