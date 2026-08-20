@@ -12,6 +12,7 @@ dist/
 .pnpm-store/
 .npm-cache/
 .pnpm-cache/
+.shot-tools/
 
 # 上传文件
 backend/uploads/*
