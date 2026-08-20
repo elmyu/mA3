@@ -1,0 +1,54 @@
+/* 绿色主题：覆盖 Element Plus 主色，全局禁用动画 */
+:root {
+  --el-color-primary: #16a34a;
+  --el-color-primary-light-3: #4cbf77;
+  --el-color-primary-light-5: #7dd39d;
+  --el-color-primary-light-7: #aee6c3;
+  --el-color-primary-light-8: #c7efd6;
+  --el-color-primary-light-9: #e6f7ec;
+  --el-color-primary-dark-2: #12873d;
+  --el-bg-color-page: #f4f7f4;
+  --el-border-radius-base: 6px;
+}
+
+/* 少用/不用动画：所有过渡与动画置零 */
+*,
+*::before,
+*::after {
+  transition-duration: 0s !important;
+  animation-duration: 0s !important;
+  animation-delay: 0s !important;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--el-bg-color-page);
+  font-family: 'Microsoft YaHei', 'PingFang SC', Arial, sans-serif;
+  color: #1f2937;
+}
+
+.card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.page-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 16px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+  align-items: center;
+}

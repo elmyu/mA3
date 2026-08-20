@@ -11,6 +11,7 @@ node_modules/
 dist/
 .pnpm-store/
 .npm-cache/
+.pnpm-cache/
 
 # 上传文件
 backend/uploads/*
