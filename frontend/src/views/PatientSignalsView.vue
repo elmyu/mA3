@@ -20,7 +20,7 @@
           <el-descriptions-item label="采样率">{{ current.sample_rate }} Hz</el-descriptions-item>
           <el-descriptions-item label="记录时间">{{ current.recorded_at }}</el-descriptions-item>
         </el-descriptions>
-        <el-alert class="tip" title="波形图组件将在后续版本接入" type="info" :closable="false" />
+        <EChartWave :values="current.values || []" :sample-rate="current.sample_rate" />
       </template>
     </el-dialog>
   </div>
@@ -28,7 +28,8 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
-import { getMySignals } from '../api/signals'
+import EChartWave from '../components/EChartWave.vue'
+import { getMySignals, getWaveform } from '../api/signals'
 
 const records = ref([])
 const loading = ref(false)
@@ -45,16 +46,11 @@ async function load() {
   }
 }
 
-function openDetail(row) {
-  current.value = row
+async function openDetail(row) {
+  const res = await getWaveform(row.id)
+  current.value = res.data
   dialogVisible.value = true
 }
 
 onMounted(load)
 </script>
-
-<style scoped>
-.tip {
-  margin-top: 14px;
-}
-</style>

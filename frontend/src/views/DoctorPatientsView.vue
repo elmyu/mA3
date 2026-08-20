@@ -27,21 +27,34 @@
           <el-table-column prop="signal_type" label="信号类型" width="110" />
           <el-table-column prop="sample_rate" label="采样率(Hz)" width="110" />
           <el-table-column prop="recorded_at" label="记录时间" />
+          <el-table-column label="操作" width="100">
+            <template #default="{ row }">
+              <el-button size="small" type="success" plain @click="openWave(row)">波形</el-button>
+            </template>
+          </el-table-column>
         </el-table>
       </template>
+    </el-dialog>
+
+    <el-dialog v-model="waveVisible" title="生理信号波形" width="860px">
+      <EChartWave v-if="waveData" :values="waveData.values || []" :sample-rate="waveData.sample_rate" />
     </el-dialog>
   </div>
 </template>
 
 <script setup>
 import { onMounted, ref } from 'vue'
+import EChartWave from '../components/EChartWave.vue'
 import { getPatientSignals, getPatients } from '../api/patients'
+import { getWaveform } from '../api/signals'
 
 const patients = ref([])
 const loading = ref(false)
 const signalsVisible = ref(false)
 const currentPatient = ref(null)
 const patientSignals = ref([])
+const waveVisible = ref(false)
+const waveData = ref(null)
 
 async function load() {
   loading.value = true
@@ -58,6 +71,12 @@ async function openSignals(patient) {
   signalsVisible.value = true
   const res = await getPatientSignals(patient.id)
   patientSignals.value = res.data.records
+}
+
+async function openWave(row) {
+  const res = await getWaveform(row.id)
+  waveData.value = res.data
+  waveVisible.value = true
 }
 
 onMounted(load)
