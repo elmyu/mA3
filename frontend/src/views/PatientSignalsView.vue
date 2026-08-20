@@ -1,6 +1,9 @@
 <template>
   <div class="card">
     <h2 class="page-title">我的健康档案</h2>
+    <div class="toolbar">
+      <CsvUpload @success="load" />
+    </div>
     <el-table :data="records" v-loading="loading" stripe>
       <el-table-column prop="id" label="记录ID" width="90" />
       <el-table-column prop="signal_type" label="信号类型" width="110" />
@@ -28,6 +31,7 @@
 
 <script setup>
 import { onMounted, ref } from 'vue'
+import CsvUpload from '../components/CsvUpload.vue'
 import EChartWave from '../components/EChartWave.vue'
 import { getMySignals, getWaveform } from '../api/signals'
 
