@@ -23,4 +23,8 @@ def create_app(config_class=Config):
     def handle_api_error(err):
         return jsonify({"code": err.code, "message": err.message}), err.code
 
+    @app.errorhandler(413)
+    def handle_too_large(_err):
+        return jsonify({"code": 413, "message": "文件过大，最大 10MB"}), 413
+
     return app

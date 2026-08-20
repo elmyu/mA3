@@ -1,8 +1,8 @@
 """生理信号接口。"""
-from flask import Blueprint, g, jsonify
+from flask import Blueprint, g, jsonify, request
 
 from ..models import ROLE_DOCTOR, ROLE_PATIENT
-from ..services import signal_service
+from ..services import signal_service, upload_service
 from ..utils.auth import role_required
 
 bp = Blueprint("signals", __name__, url_prefix="/api/signals")
@@ -57,3 +57,44 @@ def waveform(record_id):
             },
         }
     )
+
+
+@bp.post("/upload")
+@role_required(ROLE_PATIENT, ROLE_DOCTOR)
+def upload():
+    """上传生理数据 CSV 文件
+    ---
+    tags: [患者端]
+    security:
+      - Bearer: []
+    consumes:
+      - multipart/form-data
+    parameters:
+      - in: formData
+        name: file
+        type: file
+        required: true
+      - in: formData
+        name: signal_type
+        type: string
+      - in: formData
+        name: sample_rate
+        type: integer
+      - in: formData
+        name: patient_id
+        type: integer
+    responses:
+      201:
+        description: 上传成功并生成信号记录
+      400:
+        description: 文件类型或内容不合法
+    """
+    form = request.form
+    record = upload_service.save_csv(
+        request.files.get("file"),
+        g.current_user,
+        form.get("signal_type"),
+        form.get("sample_rate"),
+        form.get("patient_id"),
+    )
+    return jsonify({"code": 0, "data": record.to_dict()}), 201
