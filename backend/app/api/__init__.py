@@ -2,7 +2,7 @@
 
 
 def register_blueprints(app):
-    from . import auth, patients, signals
+    from . import appointments, auth, devices, patients, signals
 
-    for blueprint in (auth.bp, patients.bp, signals.bp):
+    for blueprint in (auth.bp, patients.bp, signals.bp, devices.bp, appointments.bp):
         app.register_blueprint(blueprint)

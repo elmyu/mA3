@@ -7,6 +7,12 @@ def list_own(user_id):
     return SignalRecord.query.filter_by(patient_id=user_id).order_by(SignalRecord.recorded_at.desc())
 
 
+def list_by_patient(patient_id):
+    return SignalRecord.query.filter_by(patient_id=patient_id).order_by(
+        SignalRecord.recorded_at.desc()
+    )
+
+
 def get_accessible_record(record_id, user):
     record = SignalRecord.query.get(record_id)
     if record is None:
