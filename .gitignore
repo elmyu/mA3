@@ -4,7 +4,7 @@ __pycache__/
 venv/
 .env
 .pip-cache/
-instance/*.db
+instance/
 
 # Node
 node_modules/
