@@ -24,7 +24,7 @@ aiT2/
 ├─ frontend/           # Vue3 前端（src/api、src/router、src/stores、src/views、src/components）
 ├─ docker/             # Dockerfile.backend / Dockerfile.frontend / nginx 模板 / docker-compose.yml
 ├─ .github/workflows/  # GitHub Actions：自动构建并推送 GHCR 镜像
-├─ docs/               # 设计简报、Sealos 部署指南、API 截图、演示截图
+├─ docs/               # 设计简报、详细分步计划、Sealos 部署指南、API 截图、演示截图
 └─ README.md
 ```
 

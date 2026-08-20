@@ -25,3 +25,7 @@ Thumbs.db
 
 # 作业要求文档（不纳入仓库）
 大作业要求.docx
+
+# 提交用源码包（生成在仓库根目录，不纳入版本控制）
+/backend.zip
+/frontend.zip
